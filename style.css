@@ -1,32 +1,69 @@
+body
+{
+    font-family: 'PT Sans Narrow', sans-serif;
+             background-image: url("dark.png");
+     /* Background pattern from subtlepatterns.com */
+
+}
+
 #container
 {
 width: 1000px;
 margin-left: auto;
 margin-right: auto;
+text-align:justify;
 }
 
 #logo
 {
-    background-color: black;
-    color: aliceblue;
+    background-image: url("1743.jpg");
     text-align:center;
-    padding: 15px;
+    padding: 10px;
+    margin-bottom: 10px;
+
 }
 
-#nav
+#logo > h1
+{
+    color: #B8BDF5;
+
+}
+
+#menu
 {
     float: left;
-    background-color: beige;
+    background-color: #B8BDF5;
     width: 120px;
-    min-height: 620px;
     padding: 10px;
+    min-height: 620px;
 }
+
+.option
+{
+    min-width: 50px;
+    height: 25px;
+    font-size: 18px;
+    padding: 10px;
+    border-bottom: 2px dotted #444444;
+    opacity: 0.8;
+    
+}
+
+.option:hover
+{
+    background-color: #DBDBC8;
+    cursor: pointer;
+}
+
 
 #content
 {
     float: left;
     padding: 20px;
     width: 640px;
+    height: 600px;
+    background-color: grey;
+
 }
 
 #ad
@@ -35,12 +72,16 @@ margin-right: auto;
     width:160px;
     min-height: 620px;
     padding:10px;
-    background-color: lightgray;
+    background-color: #B8BDF5;
 }
 
+#luka
+{    
+clear:both;
+height: 10px;
+}
 #footer
 {
-    clear:both;
     background-color: black;
     color: white;
     text-align: center;
