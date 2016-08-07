@@ -25,7 +25,8 @@ text-align:justify;
 
 #logo > h1
 {
-    color: #B8BDF5;
+    color: midnightblue;
+    text-shadow: 2px 2px 10px black;
 
 }
 
