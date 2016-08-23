@@ -47,7 +47,7 @@ var stop = 0;
 function out()
     {
     var timer=0;
-    timer=setTimeout("poczekaj()",2000);
+    timer=setTimeout("poczekaj()",4000);
     }
 
 function zatrzymaj()
