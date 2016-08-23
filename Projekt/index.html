@@ -8,8 +8,9 @@
         
 
 <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700&subset=latin-ext" rel="stylesheet">
-
 <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Denk+One" rel="stylesheet">
+
 
         <script type="text/javascript" src="timer.js"></script>
         <meta name="description" content="I will create your website!"/>
@@ -17,7 +18,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
     </head>
     
-    <body onload="odliczanie();">
+    <body onload="odliczanie()">
         
         <div id="header">
             <img id="logo" src="img/kolo.png" width= "150px" height="150px"/>
@@ -27,13 +28,22 @@
                 <ul>
                     <li>Strona główna</li>
                     <li>O mnie</li>
-                    <li>Moje projekty</li>
+                    <li onmouseover="over()" onmouseout="out()">Moje projekty</li>
                     <li>Kontakt</li>
                 </ul>
             </div>
             <div id="zegar"></div>
+            <div id="data"></div>
         </div>
         
+        <div id="rozwijanemenu"  onmouseover="zatrzymaj()" onmouseout="pusc()">
+            <ul>
+                    <li>Projekt I</li>
+                    <li>Projekt II</li>
+                    <li>Projekt III</li>
+                    <li>Projekt IV</li>
+            </ul>
+        </div>
         
             <div id="content"> 
 <p><span>

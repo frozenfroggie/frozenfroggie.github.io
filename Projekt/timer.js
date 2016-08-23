@@ -3,7 +3,11 @@ function odliczanie()
 		var dzisiaj = new Date();
 		
 		var dzien = dzisiaj.getDate();
+        		if (dzien<10) dzien = "0"+dzien;
+
 		var miesiac = dzisiaj.getMonth()+1;
+        		if (miesiac<10) miesiac = "0"+miesiac;
+
 		var rok = dzisiaj.getFullYear();
 		
 		var godzina = dzisiaj.getHours();
@@ -16,7 +20,43 @@ function odliczanie()
 		if (sekunda<10) sekunda = "0"+sekunda;
 		
 		document.getElementById("zegar").innerHTML = 
-		 dzien+"/"+miesiac+"/"+rok+" | "+godzina+":"+minuta+":"+sekunda;
+		 godzina+":"+minuta+":"+sekunda;
 		 
 		 setTimeout("odliczanie()",1000);
-	}
+        
+        		
+        document.getElementById("data").innerHTML =
+            dzien + "." + miesiac + "." + rok;
+        
+    }
+
+function over()
+    {
+        clearTimeout("timer");
+        document.getElementById("rozwijanemenu").style.display = 'block';   
+
+    }
+
+var stop = 0;
+ function poczekaj()
+    {
+    if(stop==1)document.getElementById("rozwijanemenu").style.display = 'block';
+        else if(stop==0)document.getElementById("rozwijanemenu").style.display = 'none';   
+    }
+
+function out()
+    {
+    var timer=0;
+    timer=setTimeout("poczekaj()",2000);
+    }
+
+function zatrzymaj()
+    {
+     stop = 1;
+    }   
+
+function pusc()
+{
+    stop = 0;
+    out();
+}
