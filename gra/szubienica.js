@@ -1,3 +1,4 @@
+/* TABLICE Z HASLAMI I ALFABETEM */
 var hasla = new Array(20);
 hasla[0] = "Apetyt rośnie w miarę jedzenia";
 hasla[1] = "Co ma piernik do wiatraka";
@@ -22,7 +23,6 @@ hasla[19] = "Felix Net i Nika oraz Teoretycznie Możliwa Katastrofa";
 
 
 var litery = new Array(35);
-
 litery[0] = "A";
 litery[1] = "Ą";
 litery[2] = "B";
@@ -58,20 +58,27 @@ litery[31] = "Y";
 litery[32] = "Z";
 litery[33] = "Ż";
 litery[34] = "Ź";
+/* ----------------------------- */
 
+/* DEKLARACJA ZMIENNYCH */
 var haslo = "";
 var haslo1 = "";
 var dlugosc= 0;
 var ile_skuch = 0;
+/*----------------------*/
 
+
+/* DZWIĘKI */
 var yes = new Audio("yes.wav");
 var no = new Audio("no.wav");
-
+var win = new Audio("win.wav");
+var lose = new Audio("lose.wav");
+/* --------- */
 
 /* WYPISZ KATEGORIE */
 function prestart() {
     document.getElementById("alfabet").innerHTML =
-        'Wybierz kategorię z której będzie losowane hasło: <br/>' + '<ol>' + '<li class="kategorie" onclick= "losowanie(1)">Przysłowia</li>' +  '<li class="kategorie" onclick= "losowanie(2)">Znane osoby</li>' + '<li class="kategorie" onclick= "losowanie(3)">Film</li>' + '<li class="kategorie" onclick= "losowanie(4)">Książka</li>' + '</ol>';
+        'Wybierz kategorię z której będzie losowane hasło: <br/>' + '<ol>' + '<li class="kategorie" onclick= "losowanie(1)">Przysłowia</li>' +  '<li class="kategorie" onclick= "losowanie(2)">Znane osoby</li>' + '<li class="kategorie" onclick= "losowanie(3)">Film</li>' + '<li class="kategorie" onclick= "losowanie(4)">Książka</li>' + '</ol>' + "<br/><br/>" + '<span class="kategorie" onclick="wezhaslo()">Sam wpiszę hasło! (opcja dla 2 graczy)</span>';
 }
 window.onload = prestart;
 /* --------------- */
@@ -118,9 +125,26 @@ function losowanie(kategoria) {
 }
 /* ------------------------------------------------------------------ */
 
+function wezhaslo()
+{
+        document.getElementById("alfabet").innerHTML =   '<form><input type="password" placeholder="Wpisz hasło" onBlur="ustawhaslo(this.value)" value=""><input type="submit" value="Zatwierdź"> </form>';
+}
+
+function ustawhaslo(twojehaslo)
+{
+    haslo = twojehaslo;
+    haslo = haslo.toUpperCase();
+    dlugosc = haslo.length;
        
-
-
+    for (i=0; i<dlugosc; i++)
+    {
+	   if (haslo.charAt(i)==" ") haslo1 = haslo1 + " ";
+	   else haslo1 = haslo1 + "-";
+    }
+    
+    start();
+}
+    
 
 /* WYKRESKUJ HASŁO */
 function wypisz_haslo()
@@ -183,9 +207,15 @@ function sprawdz(nr)
 	
 	//wygrana
 	if (haslo == haslo1)
+        {
+        win.play();
 	document.getElementById("alfabet").innerHTML  = "Tak jest! Podano prawidłowe hasło: "+haslo+'<br /><br /><span class="reset" onclick="location.reload()">JESZCZE RAZ?</span>';
-	
+        }
+    
 	//przegrana
 	if (ile_skuch>=9)
+        {
+            lose.play();
 	document.getElementById("alfabet").innerHTML  = "Przegrana! Prawidłowe hasło: "+haslo+'<br /><br /><span class="reset" onclick="location.reload()">JESZCZE RAZ?</span>';
+        }
 }
