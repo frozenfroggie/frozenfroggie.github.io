@@ -6,6 +6,14 @@ body
 
 }
 
+span
+            {
+                font-size: 25px;
+                margin-left: 5px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
 /* !!! HEADING !!! */
 #header
 {
@@ -99,30 +107,37 @@ ul > li:hover
 {   
     text-align: center;
     vertical-align: middle;
-    top: -120px;
-    left: 190px;
+    top: -110px;
+    left: 200px;
     position: relative;
     width: 100px;
     height: 30px;
     color: white;
     display: inline-block;
     font-family: 'Denk One', sans-serif;
-    font-size: 35px;
+    
+
+
+
+    font-size: 25px;
 }
 
 #data
 {
     text-align: center;
     vertical-align: middle;
-    top: -70px;
-    left: 100px;
+    top: -65px;
+    left: 50px;
     position: relative;
-    width: 100px;
-    height: 30px;
+    width: 200px;
+    height: 50px;
     color: white;
     display: inline-block;
     font-family: 'Denk One', sans-serif;
-    font-size: 20px;
+
+
+
+    font-size: 18px;
 }
 
 #rozwijanemenu
@@ -149,6 +164,21 @@ ul > li:hover
 }
 
 /* !!! MAIN CONTENT !!! */
+#txt
+{
+    width: 575px;
+    height: auto;
+    float: left;
+    margin-right: 25px;
+}
+
+#divzeslajderem
+{
+    width: 600px;
+    height: auto;
+    float: left;
+}
+
 
 #content
 {
@@ -157,8 +187,8 @@ ul > li:hover
     margin-right: auto;
 
     top: 15px;
-    width: 85%;
-    height: auto;
+    width: 1200px;
+    min-height: 500px;
     background-color: rgba(185, 202, 200, 0.8);
     color: black;
     padding: 20px 50px;

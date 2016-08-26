@@ -10,15 +10,79 @@
 <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700&subset=latin-ext" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Denk+One" rel="stylesheet">
+        
+
 
 
         <script type="text/javascript" src="timer.js"></script>
         <meta name="description" content="I will create your website!"/>
         <meta name="keywords" content="keywords"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+        
+        <script
+			  src="https://code.jquery.com/jquery-3.1.0.js"
+			  integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+			  crossorigin="anonymous"></script>
+        
+        <script type="text/javascript">
+            
+			var numer = Math.floor(Math.random()*5)+1;
+            var timer1=0;
+            var timer2=0;
+            var timer3=0;
+            
+            function ustawslajd(nrslajdu)
+            {
+                clearTimeout(timer1);
+                clearTimeout(timer2);
+                clearTimeout(timer3);
+                schowaj();
+                czarny(numer);
+                numer=nrslajdu-1;
+                setTimeout("zmienslajd()",500);
+               
+            }
+            
+            function schowaj()
+            {
+            $("#slider").fadeOut(500);    
+            }
+            
+            function bialy(num)
+            {
+                    var kolor = document.getElementById(num);
+                    kolor.style.color = "white";
+            }
+            
+            function czarny(num)
+            {
+                    
+                    var kolor = document.getElementById(num);
+                    kolor.style.color = "black";
+            }
+            
+            function zmienslajd()
+                {
+                    numer++;
+                    if (numer>5) numer=1;
+                    
+				var plik = "<img src=\"slajdy/slajd"+numer+".png\" />";
+                    document.getElementById("slider").innerHTML=plik;
+                    
+                    bialy(numer);
+                    timer3 = setTimeout("czarny(numer)",5000);
+
+                    $("#slider").fadeIn(500);
+                    timer1 = setTimeout("schowaj()",4500);
+                    timer2 = setTimeout("zmienslajd()",5000);  
+                }
+            
+            
+        </script>
+        
     </head>
     
-    <body onload="odliczanie()">
+    <body onload="odliczanie();zmienslajd();">
         
         <div id="header">
             <img id="logo" src="img/kolo.png" width= "150px" height="150px"/>
@@ -28,7 +92,7 @@
                 <ul>
                     <li>Strona główna</li>
                     <li>O mnie</li>
-                    <li onmouseover="over()" onmouseout="out()">Moje projekty</li>
+                    <li onmouseover="over()" onmouseout="out(2000)">Moje projekty</li>
                     <li>Kontakt</li>
                 </ul>
             </div>
@@ -46,27 +110,36 @@
         </div>
         
             <div id="content"> 
-<p><span>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tellus ipsum, vulputate ut arcu eu, semper dignissim arcu. Maecenas mi erat, consectetur quis commodo vel, commodo sit amet erat. Cras ullamcorper, diam a condimentum rhoncus, augue lacus vehicula neque, quis tincidunt neque sem a nulla. Suspendisse non dignissim est. Sed quis neque vel erat dictum dictum ut sed sapien. Aliquam bibendum dictum ex at malesuada. Suspendisse elit augue, lobortis a urna ac, mollis bibendum orci. In finibus pulvinar sapien at iaculis. Vivamus tempus in purus imperdiet ornare. Morbi eu ex id mi suscipit ultricies. Suspendisse auctor vel nunc vitae dignissim. Maecenas nec lorem quis sem elementum sodales quis sed magna. Morbi sed nisl sed magna egestas mattis non eget lectus.
-</p>
-            
-<p>
-Etiam euismod lorem euismod magna rhoncus posuere. Pellentesque tempus nisi libero, vel lacinia nunc viverra nec. Quisque posuere ut elit ut tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus et feugiat arcu, lobortis accumsan ligula. Nunc feugiat libero eu venenatis porttitor. Sed enim arcu, placerat et mi vel, mattis luctus urna. Integer blandit lectus eu tincidunt convallis. Aenean pretium auctor enim quis condimentum. Pellentesque a augue non erat rutrum rutrum. Morbi elementum metus id ipsum mollis ultricies sit amet id elit. Sed eget magna id sapien volutpat eleifend.
-</p>
                 
-<p>
-Vivamus lectus risus, rutrum nec tempor at, feugiat sit amet diam. Nulla vitae ullamcorper ante. In magna nisi, lobortis hendrerit felis ut, dapibus luctus eros. Nam et neque risus. Vivamus imperdiet, orci id fringilla facilisis, eros est accumsan nunc, ac iaculis sapien orci suscipit dolor. In volutpat posuere mauris, id pretium nunc malesuada sit amet. Donec auctor euismod diam, a maximus sem accumsan ac. Suspendisse sit amet diam orci. Etiam sit amet neque laoreet, eleifend elit id, placerat urna. Sed eget est et purus varius luctus.
-</p>
-        
-<p>
-Donec ultrices vulputate ipsum, vel lobortis neque viverra eget. Donec eu dui a urna fermentum posuere in vel elit. Curabitur velit nibh, fermentum sed dolor ut, varius venenatis tellus. Phasellus quis dapibus ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tortor augue, dapibus in facilisis in, suscipit vitae quam. Praesent et sodales magna.
-</p>
-                        
-<p>
-Donec ultrices vulputate ipsum, vel lobortis neque viverra eget. Donec eu dui a urna fermentum posuere in vel elit. Curabitur velit nibh, fermentum sed dolor ut, varius venenatis tellus. Phasellus quis dapibus ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tortor augue, dapibus in facilisis in, suscipit vitae quam. Praesent et sodales magna.
-</p>
-    
+                
+                
+                <div id="txt">
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tortor augue, gravida feugiat purus sit amet, tristique varius libero. Nunc pulvinar aliquam quam, in ullamcorper dolor faucibus ac. Quisque ullamcorper porttitor ligula eu viverra. Curabitur auctor, neque vitae blandit vulputate, nibh diam accumsan ipsum, sit amet porta libero ex ac libero. Integer tempor magna at enim aliquam rutrum. Donec at ex non nibh pulvinar fermentum. Cras facilisis luctus tortor nec fermentum. Nullam tellus sapien, volutpat sed dui sit amet, hendrerit fringilla magna. Aliquam in ante luctus, congue nunc non, efficitur risus. Morbi ullamcorper orci ac nisl consequat, a scelerisque diam sagittis. Nulla gravida mauris molestie luctus dictum. Cras molestie dolor id libero dictum malesuada.
+                </p>
+                <p>
+Sed sodales ex dui, vitae semper ex elementum id. Donec id enim mauris. Etiam gravida est nibh, at varius turpis iaculis nec. Maecenas ut posuere metus. Sed euismod luctus ultrices. Pellentesque hendrerit laoreet mauris, sit amet aliquet lacus lacinia sed. Quisque sit amet nulla convallis, gravida diam sed, tristique erat. 
+                </p>
+                    
+                    <p>
+                    Etiam tristique porttitor risus. Nam vestibulum urna orci, ac tincidunt sem cursus a. Vivamus dictum dui ac turpis placerat, vitae porttitor sem semper. Nullam accumsan urna non metus elementum elementum. Duis sit amet maximus tellus. Sed faucibus justo enim, quis finibus arcu malesuada eget.
+                    </p>
+                </div>
+                
+                
+                
+                <div id="divzeslaiderem">
+                    <br/>
+                <span id="1" onclick="ustawslajd(1);" style="cursor:pointer">&#8226;</span>
+        <span id="2" onclick="ustawslajd(2);" style="cursor:pointer">&#8226;</span>
+        <span id="3" onclick="ustawslajd(3);" style="cursor:pointer">&#8226;</span>
+        <span id="4" onclick="ustawslajd(4);" style="cursor:pointer">&#8226;</span>
+        <span id="5" onclick="ustawslajd(5);" style="cursor:pointer">&#8226;</span>
+        <div id="slider"></div>
             </div>
+               
+                
+                
+        </div>
         
         <div id="footer">
             <h4><i>FrozenFroggie 2016 &reg; All right reserved!</i></h4>

@@ -5,9 +5,39 @@ function odliczanie()
 		var dzien = dzisiaj.getDate();
         		if (dzien<10) dzien = "0"+dzien;
 
-		var miesiac = dzisiaj.getMonth()+1;
-        		if (miesiac<10) miesiac = "0"+miesiac;
+		var miesiac = dzisiaj.getMonth() + 1;
+        
+        var txt="dzien miesiąca";
 
+        
+        switch(miesiac)
+                {
+        case 1: txt="Stycznia";
+                        break;
+        case 2: txt="Lutego";
+                        break;
+        case 3: txt="Marca";
+                        break;
+        case 4: txt="Kwietnia";
+                        break;
+        case 5: txt="Maja";
+                        break;
+        case 6: txt="Czerwca";
+                        break;
+        case 7: txt="Lipca";
+                        break;
+        case 8: txt="Sierpnia";
+                        break;
+        case 9: txt="Września";
+                        break;
+        case 10: txt="Października";
+                        break;
+        case 11: txt="Listopada";
+                        break;
+        case 12: txt="Grudnia";
+                        break;
+                }
+        
 		var rok = dzisiaj.getFullYear();
 		
 		var godzina = dzisiaj.getHours();
@@ -25,14 +55,15 @@ function odliczanie()
 		 setTimeout("odliczanie()",1000);
         
         		
+                
         document.getElementById("data").innerHTML =
-            dzien + "." + miesiac + "." + rok;
+            dzien + " " + txt + " " + rok;
         
     }
 
+
 function over()
     {
-        clearTimeout("timer");
         document.getElementById("rozwijanemenu").style.display = 'block';   
 
     }
@@ -44,10 +75,11 @@ var stop = 0;
         else if(stop==0)document.getElementById("rozwijanemenu").style.display = 'none';   
     }
 
-function out()
+function out(czas)
     {
+        var x= czas;
     var timer=0;
-    timer=setTimeout("poczekaj()",4000);
+    timer=setTimeout("poczekaj()",x);
     }
 
 function zatrzymaj()
@@ -58,5 +90,8 @@ function zatrzymaj()
 function pusc()
 {
     stop = 0;
-    out();
+    out(1000);
 }
+
+
+
