@@ -1,3 +1,4 @@
+
 /* TABLICE Z HASLAMI I ALFABETEM */
 var hasla = new Array(20);
 hasla[0] = "Apetyt rośnie w miarę jedzenia";
@@ -60,10 +61,11 @@ litery[33] = "Ż";
 litery[34] = "Ź";
 /* ----------------------------- */
 
+
 /* DEKLARACJA ZMIENNYCH */
 var haslo = "";
 var haslo1 = "";
-var dlugosc= 0;
+var dlugosc = 0;
 var ile_skuch = 0;
 /*----------------------*/
 
@@ -75,37 +77,50 @@ var win = new Audio("win.wav");
 var lose = new Audio("lose.wav");
 /* --------- */
 
+/* -------------------------------------------KONIEC DEKLARACJI ZMIENNYCH---------------------------------------------------------------- */
+
+
+
 /* WYPISZ KATEGORIE */
 function prestart() {
+    "use strict";
+    
     document.getElementById("alfabet").innerHTML =
-        'Wybierz kategorię z której będzie losowane hasło: <br/>' + '<ol>' + '<li class="kategorie" onclick= "losowanie(1)">Przysłowia</li>' +  '<li class="kategorie" onclick= "losowanie(2)">Znane osoby</li>' + '<li class="kategorie" onclick= "losowanie(3)">Film</li>' + '<li class="kategorie" onclick= "losowanie(4)">Książka</li>' + '</ol>' + "<br/><br/>" + '<span class="kategorie" onclick="wezhaslo()">Sam wpiszę hasło! (opcja dla 2 graczy)</span>';
+        'Wybierz kategorię z której będzie losowane hasło: <br/>' + '<ul>' + '<li class="kategorie" onclick= "losowanie(1)">Przysłowia</li>' +  '<li class="kategorie" onclick= "losowanie(2)">Znane osoby</li>' + '<li class="kategorie" onclick= "losowanie(3)">Film</li>' + '<li class="kategorie" onclick= "losowanie(4)">Książka</li>' + '</ul>' + "<br/><br/>" + '<span class="kategorie" onclick="showPasswordField(true)">Sam wpiszę hasło! (opcja dla 2 graczy)</span>';
 }
 window.onload = prestart;
 /* --------------- */
 
 
-
-
-/* LOSOWANIE HASŁA Z DANEJ KATEGORII I WYPISANIE DIVÓW Z ALFABETEM A NASTĘPNIE PRZEKIEROWANIE DO FUNKCJI WYKRESKOWUJĄCEJ HASŁO */
-function start() {
-	
-	var tresc_diva = "";
-	
-	for (i=0; i<=34; i++) {
-		var element = "lit" + i;
-		tresc_diva = tresc_diva + '<div class="litera" onclick="sprawdz('+i+')" id="'+element+'">' + litery[i] + '</div>';
-		if ((i+1) % 7 ==0) tresc_diva = tresc_diva + '<div style="clear:both;"></div>';
-	}
-	
-	document.getElementById("alfabet").innerHTML = tresc_diva;
-	
-	
-	wypisz_haslo();
+/* POKAZ WYKRESKOWANE HASLO */
+function wypisz_haslo() {
+    "use strict";
+	document.getElementById("plansza").innerHTML = haslo1;
 }
 
+function start() {
+    "use strict";
+	var tresc_diva = "", i = 0, element = "lit";
+
+    $('#div_haslo').hide();
+  
+	for (i = 0; i <= 34; i += 1) {
+		element = "lit" + i;
+		tresc_diva = tresc_diva + '<div class="litera" onclick="sprawdz( ' + i + ' )" id = "' + element + '">' + litery[i] + '</div>';
+		if ((i + 1) % 7 == 0) tresc_diva = tresc_diva + '<div style="clear:both;"></div>';
+	}
+
+	document.getElementById("alfabet").innerHTML = tresc_diva;
+            $('#alfabet').show();
+    
+
+	wypisz_haslo();
+}
+/* LOSOWANIE HASŁA Z DANEJ KATEGORII, WYKRESKOWANIE HASŁA A NASTĘPNIE WSTAWIANIE DIV'ÓW Z ALFABETEM I PRZEKIEROWANIE DO FUNKCJI WYPISUJĄCEJ WYKRESKOWANE HASŁO */
+
 function losowanie(kategoria) {
-    var zwroc = 0;
-    var numer = Math.floor(Math.random() * 5);
+    "use strict";
+    var zwroc = 0, i = 0, numer = Math.floor(Math.random() * 5);
     switch (kategoria) { case 1: zwroc = numer; break;
                         case 2: zwroc = 5 + numer; break;
                         case 3: zwroc = 10 + numer; break;
@@ -114,70 +129,104 @@ function losowanie(kategoria) {
     haslo = hasla[zwroc];
     haslo = haslo.toUpperCase();
     dlugosc = haslo.length;
-       
-    for (i=0; i<dlugosc; i++)
-{
-	if (haslo.charAt(i)==" ") haslo1 = haslo1 + " ";
-	else haslo1 = haslo1 + "-";
-}
-    
+
+
+
+    for (i = 0; i < dlugosc; i += 1) {
+        if (haslo.charAt(i) == " ") {
+            haslo1 = haslo1 + " ";
+        } else {
+            haslo1 = haslo1 + "-";
+        }
+    }
+
+
     start();
 }
-/* ------------------------------------------------------------------ */
 
-function wezhaslo()
-{
-        document.getElementById("alfabet").innerHTML =   '<form><input type="password" placeholder="Wpisz hasło" onBlur="ustawhaslo(this.value)" value=""><input type="submit" value="Zatwierdź"> </form>';
+
+
+
+
+
+
+/* -------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+function showPasswordField(shouldShow){
+    if (shouldShow) {
+        $('#div_haslo').show();
+        $('#alfabet').hide();
+    }
+    else {
+        $('#div_haslo').hide();
+        $('#alfabet').show();
+    }
+    
+$('input[type="password"]').keypress(function(e)
+                                        {
+                                            var ENTER_KEY = 13;
+                                            if (e.which === ENTER_KEY) e.preventDefault();
+                                        }
+                                         )
 }
+
+/* WIĘKSZA ILOŚĆ GRACZY */
+function wezhaslo(documentId)
+{
+    var _haslo = document.getElementById(documentId).value;
+
+    ustawhaslo(_haslo);
+
+}
+                                         
 
 function ustawhaslo(twojehaslo)
 {
     haslo = twojehaslo;
     haslo = haslo.toUpperCase();
     dlugosc = haslo.length;
-       
+
     for (i=0; i<dlugosc; i++)
     {
 	   if (haslo.charAt(i)==" ") haslo1 = haslo1 + " ";
 	   else haslo1 = haslo1 + "-";
     }
-    
+
     start();
 }
-    
+/* -------------------- */
 
-/* WYKRESKUJ HASŁO */
-function wypisz_haslo()
-{
-	document.getElementById("plansza").innerHTML = haslo1;
-}
+
 
 /* ----------------- */
 
 
-
-
+/* DODANIE METODY DO KLASY STRING */
 String.prototype.ustawZnak = function(miejsce, znak)
 {
 	if (miejsce > this.length - 1) return this.toString();
 	else return this.substr(0, miejsce) + znak + this.substr(miejsce+1);
 }
+/* ------------------------------ */
 
 
+/* SPRAWDZANIE CZY LITERA WYSTĘPUJE W HAŚLE */
 function sprawdz(nr)
 {
-	
+
 	var trafiona = false;
-	
+
 	for(i=0; i<dlugosc; i++)
 	{
-		if (haslo.charAt(i) == litery[nr]) 
+		if (haslo.charAt(i) == litery[nr])
 		{
 			haslo1 = haslo1.ustawZnak(i,litery[nr]);
 			trafiona = true;
 		}
 	}
-	
+
 	if(trafiona == true)
 	{
 		yes.play();
@@ -186,7 +235,7 @@ function sprawdz(nr)
 		document.getElementById(element).style.color = "#00C000";
 		document.getElementById(element).style.border = "3px solid #00C000";
 		document.getElementById(element).style.cursor = "default";
-		
+
 		wypisz_haslo();
 	}
 	else
@@ -196,22 +245,22 @@ function sprawdz(nr)
 		document.getElementById(element).style.background = "#330000";
 		document.getElementById(element).style.color = "#C00000";
 		document.getElementById(element).style.border = "3px solid #C00000";
-		document.getElementById(element).style.cursor = "default";	
-		document.getElementById(element).setAttribute("onclick",";");		
-		
+		document.getElementById(element).style.cursor = "default";
+		document.getElementById(element).setAttribute("onclick",";");
+
 		//skucha
 		ile_skuch++;
 		var obraz = "img/s"+ ile_skuch + ".jpg";
 		document.getElementById("szubienica").innerHTML = '<img src="'+obraz+'" alt="" />';
 	}
-	
+
 	//wygrana
 	if (haslo == haslo1)
         {
         win.play();
 	document.getElementById("alfabet").innerHTML  = "Tak jest! Podano prawidłowe hasło: "+haslo+'<br /><br /><span class="reset" onclick="location.reload()">JESZCZE RAZ?</span>';
         }
-    
+
 	//przegrana
 	if (ile_skuch>=9)
         {
@@ -219,3 +268,4 @@ function sprawdz(nr)
 	document.getElementById("alfabet").innerHTML  = "Przegrana! Prawidłowe hasło: "+haslo+'<br /><br /><span class="reset" onclick="location.reload()">JESZCZE RAZ?</span>';
         }
 }
+/* ---------------------------------------------------------------------- */
