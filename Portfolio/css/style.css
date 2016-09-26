@@ -52,10 +52,14 @@ margin: 0 auto -142px; /* dolny margines = minusowa wartość wysokości stopki 
 }
 
 /* -------------------- NAVBAR ---------------------------- */
-.navbar-inverse .navbar-nav > .active > a
-{
-background-color: transparent;
-text-decoration: none;
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+    color: #fff;
+    background-color: #262626;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+    color: #fff;
+    background-color: #333;
 }
 
 .buttonMy:hover
@@ -81,17 +85,15 @@ text-decoration: none;
   font-size: 1.15em;
 }
 
-#photoCont
-{
-  height: 100%;
-}
 
-#photoCentered
+.photo
 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 240px;
+  height: 240px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: url("../imgs/ja.png");
+  background-size: cover;
 }
 
 .img-circle
@@ -107,16 +109,6 @@ font-size: 1.7em;
 .progskills
 {
 font-size: 1.6em;
-}
-
-.photo
-{
-  width: 240px;
-  height: 240px;
-  margin: 0 auto;
-  border-radius: 50%;
-  background: url("../imgs/ja.png");
-  background-size: cover;
 }
 
 #about{
@@ -150,7 +142,8 @@ text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 line-height: 1.3em;
 }
 
-.punktor{
+.punktor
+{
 list-style-type: none;
 text-align: justify;
 margin-left: 29px;
