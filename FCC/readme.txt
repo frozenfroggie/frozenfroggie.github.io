@@ -1,1 +1,1 @@
-Projects for Free Code Camp
+Projects for Free Code Camp.
